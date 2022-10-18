@@ -45,5 +45,17 @@
   <tr><td>5</td><td>6</td></tr>
  </table>
  
+<details open>
+    <summary>이미지 보기</summary>
+    <div dir="auto">
+        <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg"><img src="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg" style="max-width: 100%;"></a>
+    </div>
+</details>
 
+<details>
+    <summary>이미지 보기</summary>
+    <div dir="auto">
+        <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg"><img src="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg" style="max-width: 100%;"></a>
+    </div>
+</details>
 
