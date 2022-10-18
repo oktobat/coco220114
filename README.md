@@ -13,7 +13,20 @@
 >> 인용문 안에 인용문은 >> 를 사용한다. 계속해서 추가 가능하다.
 3. 소스코드 표시하기 : 소스코드는 앞뒤에 ` 백틱 ` 을 감싸준다.
 
- ``` <iframe id="backgroundImage" src=""></iframe> ```
+ ``` 
+           <div class="top_menu">
+                <div class="row">
+                    <div class="search">
+                        <span class="blind">검색어를 입력하세요</span>
+                        <input type="text" id="sbox" placeholder="검색어 입력">
+                        <label for="sbox"><i class="fas fa-search"></i></label>
+                    </div>
+                    <a href="index.html"><i class="fas fa-home"></i> HOME</a>
+                    <a href="#none"><i class="fas fa-lock"></i> 로그인</a>
+                    <a href="join.html"><i class="fas fa-sign-in-alt"></i> 회원가입</a>
+                </div>
+            </div>
+ ```
  
  4. 데모사이트 이동하기 : <https://oktobat.github.io/coco220114/>
  
