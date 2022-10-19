@@ -1,4 +1,4 @@
-# 프로젝트 : 반응형웹
+# 제목1 : 반응형웹
 ## 제목2
 ### 제목3
 #### 제목4
@@ -14,18 +14,7 @@
 3. 소스코드 표시하기 : 소스코드는 앞뒤에 ` 백틱 ` 을 감싸준다.
 
  ``` 
-           <div class="top_menu">
-                <div class="row">
-                    <div class="search">
-                        <span class="blind">검색어를 입력하세요</span>
-                        <input type="text" id="sbox" placeholder="검색어 입력">
-                        <label for="sbox"><i class="fas fa-search"></i></label>
-                    </div>
-                    <a href="index.html"><i class="fas fa-home"></i> HOME</a>
-                    <a href="#none"><i class="fas fa-lock"></i> 로그인</a>
-                    <a href="join.html"><i class="fas fa-sign-in-alt"></i> 회원가입</a>
-                </div>
-            </div>
+           <p>소스코드</p>
  ```
  
  4. 데모사이트 이동하기 : <https://oktobat.github.io/coco220114/>
@@ -33,9 +22,8 @@
  5. 이미지 첨부하기 : ![이미지설명](이미지경로)
   ![이미지설명](https://github.com/oktobat/coco220114/blob/main/img/logo.png)
  
- 6. 이미지 크기 조절하기
- 
- <img src="https://github.com/oktobat/coco220114/blob/main/img/logo.png" width="92px"></img><br/>
+ 6. 이미지 크기 조절하기<br>
+ <img src="https://github.com/oktobat/coco220114/blob/main/img/logo.png" width="100px"><br/>
  
  7. 테이블 작성하기
  ----
@@ -47,15 +35,8 @@
  
 <details open>
     <summary>이미지 보기</summary>
-    <div dir="auto">
-        <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg"><img src="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg" style="max-width: 100%;"></a>
-    </div>
+    텍스트나 이미지 등 보여주고 싶은 내용
 </details>
 
-<details>
-    <summary>이미지 보기</summary>
-    <div dir="auto">
-        <a target="_blank" rel="noopener noreferrer nofollow" href="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg"><img src="https://user-images.githubusercontent.com/77265562/118586417-ab03c480-b7d5-11eb-8b80-4ad4b6dd23a2.jpg" style="max-width: 100%;"></a>
-    </div>
-</details>
+
 
