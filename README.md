@@ -19,7 +19,7 @@
  
  4. 데모사이트 이동하기 : <https://oktobat.github.io/coco220114/>
  
- 5. 이미지 첨부하기 : 
+ 5. 이미지 첨부하기 : ![이미지설명문구는이미지경로가비정상일때표시됨](이미지경로)
   ![이미지설명](https://github.com/oktobat/coco220114/blob/main/img/logo.png)
  
  6. 이미지 크기 조절하기<br>
@@ -33,7 +33,7 @@
   <tr><td>5</td><td>6</td></tr>
  </table>
  
-<details open>
+<details>
     <summary>이미지 보기</summary>
     텍스트나 이미지 등 보여주고 싶은 내용
 </details>
