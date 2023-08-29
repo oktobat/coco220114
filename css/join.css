@@ -1,73 +1,136 @@
-@charset "utf-8";
-
-legend { display:none }
-
-.joinBox { padding-top:80px; padding-bottom:80px }
-.joinBox h2 { font-size:30px; padding:40px 0 }
-.joinBox h3 { font-size:18px; padding:20px 0 }
-
-.joinBox .agree { background:#eee; padding:20px;  }
-.joinBox .agree > div { background:#fff;
-    height:100px; 
-    overflow-y:auto;
-    line-height:1.5; padding:10px; 
-    margin-bottom:10px; 
+.joinPage .joinBox {
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
-.joinBox .agree input { margin-left:10px; }
-.joinBox .btn { text-align:center }
-.joinBox .btn button { width:100px; height:40px;  
-    border:none; background:red; 
-    margin:30px 10px; border-radius:8px;  
-    color:#fff; font-size:20px; 
-    cursor:pointer;
+.joinPage .joinBox p {
+  line-height: 1.5em;
 }
-.joinBox .btn button[type='submit'] {
-    background:#000
+.joinPage .joinBox h2 {
+  font-size: 30px;
+  padding: 40px 0;
 }
-
-.joinBox table { margin-bottom:30px }
-.joinBox col:nth-child(1) {
-    width:20%; background:#eee }
-.joinBox col:nth-child(2) {
-    width:80%; }
-.joinBox th,
-.joinBox td { border:1px solid #ddd;
-    padding:10px; text-align:left; 
-    vertical-align:middle;
-}    
-
-.joinBox input[type='checkbox'],
-.joinBox input[type='radio'],
-.joinBox input[type='checkbox'] + label,
-.joinBox input[type='radio'] + label { vertical-align:middle }
-
-.joinBox input[type='text'],
-.joinBox input[type='password'],
-.joinBox select { height:30px; border:1px solid #ddd; 
-    text-indent:1em; vertical-align:middle }   
-.joinBox select { text-indent:0em; }       
-.joinBox textarea { 
-    width:80%; height:100px; 
-    border:1px solid #ddd; 
-    padding:10px; 
+.joinPage .joinBox .btn {
+  text-align: center;
 }
-.joinBox #idbox,
-.joinBox #pwbox,
-.joinBox #irum,
-.joinBox #emailid,
-.joinBox #emaildomain { width:200px }
-.joinBox #zipcode,
-.joinBox #hp1,
-.joinBox #hp2,
-.joinBox #birth { width:100px }
-.joinBox #addr1,
-.joinBox #addr2,
-.joinBox #addr3 { width:35%}
-.joinBox #zipcode + button { 
-    height:30px; 
-    vertical-align:middle  
+.joinPage .joinBox .btn button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  background: red;
+  margin: 30px 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
 }
-.joinBox td label { margin-right:10px  }
-.joinBox .agree span, 
-.joinBox .agree input,
-.joinBox .agree label { vertical-align:middle} 
+.joinPage .joinBox .btn button[type=submit] {
+  background: #000;
+}
+.joinPage .joinBox form h3 {
+  font-size: 18px;
+  padding: 20px 0;
+}
+.joinPage .joinBox form table {
+  margin-bottom: 30px;
+}
+.joinPage .joinBox form table col:nth-child(1) {
+  width: 20%;
+  background: #eee;
+}
+@media only screen and (max-width:768px) {
+  .joinPage .joinBox form table col:nth-child(1) {
+    display: none;
+  }
+}
+.joinPage .joinBox form table col:nth-child(2) {
+  width: 80%;
+}
+@media only screen and (max-width:768px) {
+  .joinPage .joinBox form table col:nth-child(2) {
+    width: 100%;
+  }
+}
+.joinPage .joinBox form table th {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+@media only screen and (max-width:768px) {
+  .joinPage .joinBox form table th {
+    display: none;
+  }
+}
+.joinPage .joinBox form table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+.joinPage .joinBox form table input[type=checkbox],
+.joinPage .joinBox form table input[type=radio],
+.joinPage .joinBox form table input[type=checkbox] + label,
+.joinPage .joinBox form table input[type=radio] + label {
+  vertical-align: middle;
+}
+.joinPage .joinBox form table label {
+  margin-right: 10px;
+}
+.joinPage .joinBox form table input[type=text],
+.joinPage .joinBox form table input[type=password],
+.joinPage .joinBox form table select {
+  height: 30px;
+  border: 1px solid #ddd;
+  text-indent: 1em;
+  vertical-align: middle;
+}
+.joinPage .joinBox form table select {
+  text-indent: 0em;
+}
+.joinPage .joinBox form table textarea {
+  width: 80%;
+  height: 100px;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+.joinPage .joinBox form table #idbox, .joinPage .joinBox form table #pwbox, .joinPage .joinBox form table #pwboxok, .joinPage .joinBox form table #irum, .joinPage .joinBox form table #emailid, .joinPage .joinBox form table #emaildomain {
+  width: 200px;
+}
+@media only screen and (max-width:768px) {
+  .joinPage .joinBox form table #idbox, .joinPage .joinBox form table #pwbox, .joinPage .joinBox form table #pwboxok, .joinPage .joinBox form table #irum, .joinPage .joinBox form table #emailid, .joinPage .joinBox form table #emaildomain {
+    width: 100%;
+  }
+}
+.joinPage .joinBox form table #zipcode, .joinPage .joinBox form table #hp1, .joinPage .joinBox form table #hp2, .joinPage .joinBox form table #birth {
+  width: 100px;
+}
+.joinPage .joinBox form table #addr1, .joinPage .joinBox form table #addr2, .joinPage .joinBox form table #addr3 {
+  width: 35%;
+}
+.joinPage .joinBox form table #zipcode + button {
+  height: 30px;
+  vertical-align: middle;
+  background: gray;
+  border-radius: 5px;
+  border: none;
+  padding: 0 5px;
+  color: #fff;
+}
+.joinPage .joinBox form .agree {
+  background: #eee;
+  padding: 20px;
+}
+.joinPage .joinBox form .agree > div {
+  background: #fff;
+  height: 100px;
+  overflow-y: auto;
+  line-height: 1.5;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.joinPage .joinBox form .agree input {
+  margin-left: 10px;
+}
+.joinPage .joinBox form .agree span, .joinPage .joinBox form .agree input, .joinPage .joinBox form .agree label {
+  vertical-align: middle;
+}/*# sourceMappingURL=join.css.map */

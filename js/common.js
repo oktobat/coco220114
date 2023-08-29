@@ -1,205 +1,194 @@
-// 여기서부터 윈도우 resize 이벤트 발생시 스크롤바 유무에 따른 상태제어 프로그램
-var deviceSize1 = 1024;
-var deviceSize2 = 768;
+(function($){
 
-function scrollOX(status) {
+
+
+// 개발자도구창의 토글디바이스툴바 사용하지 않았을때
+// 테스트 상황(윈도우 넓이 조절)에서 생기는 오류를 해결하기 위한 코드
+var deviceSize = 1024
+function scrollOX(status){
     $('html').css({
         overflowY:status
     })
-    var htmlWidth = $('html').width()
-    return htmlWidth
+    return $('html').width()
 }
+// 토글디바이스툴바가 켜져 있으면 scX와 scO는 같은 값이 되므로
+// 아래 if 문을 들어가지 않아서 deviceSize는 원래 값임
 var scX = scrollOX('hidden')
 var scO = scrollOX('scroll')
 var scD = scX - scO
+// 토글디바이스툴바가 꺼져 있으면 스크롤바가 생성되므로
+// 스크롤바 넓이 17px을 deviceSize에서 빼야 함
 if (scD>0) {
-    deviceSize1 = deviceSize1 - scD
-    deviceSize2 = deviceSize2 - scD
+    deviceSize = deviceSize - scD
 }
-
-function init(){
-    var ww = $(window).width()
-    if (ww>deviceSize1 && !$('html').hasClass('pc')) {
-        $('html').addClass('pc').removeClass('tablet mobile')
-        $('html').css({ overflowY:'auto' })
-        $('#header #nav').css({
-            position:'absolute',
-            top:'50%',
-            transform:'translateY(-50%)',
-            right:0,
-            background:'none',
-            left:'unset',
-            overflow:'unset',
-            bottom:'unset'
-        })
-        $('#header #nav .depth1').css({
-            position:'unset',
-            top:'unset',
-            height:'unset',
-            right:'unset',
-            width:'unset',
-            background:'unset',
-            paddingTop:'unset'
-        })
-        $('#header #nav .depth1 > li > a').next().hide()
-        $('html').scrollTop(0)
-    } else if (ww>deviceSize2 && ww<=deviceSize1 && !$('html').hasClass('tablet')) {
-        $('html').addClass('tablet').removeClass('pc mobile')
-        $('html').css({ overflowY:'auto' })
-        $('#header #nav').css({
-            position:'fixed',
-            top:'0px',
-            transform:'translateY(0%)',
-            right:'0px',
-            background:'rgba(0,0,0,0.5)',
-            left:'100%',
-            bottom:'0px',
-            overflowY:'auto',
-            overflowX:'hidden'
-        })
-        $('#header #nav .depth1').css({
-            position:'absolute',
-            top:'0',
-            height:'100%',
-            right:'-200px',
-            width:'200px',
-            background:'#fff',
-            paddingTop:'50px'
-        })
-        $('#header .opennav').removeClass('on')
-        $('#header .opennav i').removeClass('fa-times').addClass('fa-bars')
-        $('html').scrollTop(0)
-    } else if (ww<=deviceSize2 && !$('html').hasClass('mobile')) {
-        $('html').addClass('mobile').removeClass('tablet pc')
-        $('html').css({ overflowY:'auto' })
-        $('#header #nav').css({
-            position:'fixed',
-            top:'0px',
-            transform:'translateY(0%)',
-            right:'0px',
-            background:'rgba(0,0,0,0.5)',
-            left:'100%',
-            bottom:'0px',
-            overflowY:'auto',
-            overflowX:'hidden'
-        })
-        $('#header #nav .depth1').css({
-            position:'absolute',
-            top:'0',
-            height:'100%',
-            right:'-200px',
-            width:'200px',
-            background:'#fff',
-            paddingTop:'50px'
-        })
-        $('#header .opennav').removeClass('on')
-        $('#header .opennav i').removeClass('fa-times').addClass('fa-bars')
-        $('html').scrollTop(0)
-    }
+var ww = $(window).width()
+if (ww>deviceSize ) {
+    $('html').addClass('pc')
+} else {
+    $('html').addClass('mobile')
 }
-init()
 
 $(window).on('resize', function(){
-    init()
-})
-// 여기까지 윈도우 resize 이벤트 발생시 스크롤바 유무에 따른 상태제어 프로그램
-
-
-
-
-$('.search label').on('click', function(){
-    $('.search').toggleClass('on')
-})
-
-
-
-
-// click 이벤트는 a 한테 적용
-// mouseover 이벤트는 li 한테 적용
-$('#header #nav .depth1 > li').on('mouseover mouseout', function(e){
-    e.preventDefault()
-    // $(this).toggleClass('on')
-    if ($('html').hasClass('pc')) {
-       $(this).find('.depth2').stop().slideToggle(200)
+    let ww = $(window).width()
+    if (ww>deviceSize && !$('html').hasClass('pc') ) {
+        $('html').addClass('pc').removeClass('mobile')
+        location.reload()
+    } else if (ww<=deviceSize && !$('html').hasClass('mobile')) {
+        $('html').addClass('mobile').removeClass('pc')
+        location.reload()
     }
 })
+// 여기까지 토글디바이스툴바 유무에 따른 테스트 오류 코드 끝
 
-$('#header #nav .depth1 > li > a').on('click', function(e){
-    e.preventDefault()
-    if ( !$('html').hasClass('pc') ) {
-        $(this).next().stop().slideToggle(200)
-        $(this).parent().siblings().find('.depth2').hide()
+setTimeout(function(){
+    let count = 0;
+    let timer = setInterval(add, 25)
+    function add() {
+        count++
+        if (count>=100) { 
+            clearInterval(timer) 
+            $('.introAni').animate({
+                left:'-100%'
+            }, 500, function(){
+                $(this).remove()
+            })
+        }
+        $('.introAni div').eq(1).text(count+'%')
     }
-})
+}, 10)
 
 
-$('#header .opennav').on('click', function(){
-    if ( !$(this).hasClass('on') ) {
-        $('html').css({
-            overflowY:'hidden'
-        })
-        $(this).addClass('on')
-        $(this).next().animate({left:0}, 300)
-        $(this).next().find('.depth1').animate({right:0}, 300)
-        $(this).find('i').removeClass('fa-bars').addClass('fa-times')
-    } else {
-        $('html').css({
-            overflowY:'auto',
-        })
-        $(this).removeClass('on')
-        $(this).next().animate({left:'100%'}, 300)
-        $(this).next().find('.depth1').animate({right:'-200px'}, 300)
-        $(this).next().find('.depth2').hide()
-        $(this).find('i').removeClass('fa-times').addClass('fa-bars')
-    }
-})
 
-
-$(window).on('scroll', function(){
-    var sct = $(this).scrollTop()
-    if ( sct>10) {
-        $('#header').css({
-            position:'fixed',
-            top:0, left:0,
-            width:'100%',
-            zIndex:99999,
-            background:'#fff'
-        })
-    } else {
-        $('#header').css({
-            position:'static',
-            width:'100%'
-        })
-    }
-
-    if (sct>500 && !$('html').hasClass('gotopflag')) {
-        $('html').addClass('gotopflag')
-        $('body').append('<div class="gotop"><a href="javascript:;"><i class="fas fa-arrow-alt-circle-up"></i></a></div>')
-        $('.gotop').css({
-            position:'fixed',
-            right:'50px',
-            bottom:'50px',
-            fontSize:'50px',
-            zIndex:999,
-            opacity:'0'
-        }).animate({opacity:1}, 300)
-    } else if (sct<=500 && $('html').hasClass('gotopflag')) {
-        $('html').removeClass('gotopflag')
-        $('.gotop').animate({opacity:0}, 300, function(){
-            $(this).remove()
-        })
-    }
-    
-})
-
-
-$('body').on('click', '.gotop', function(){
+$(window).on('load', function(){
+    $('#containerBox').load('main.html')
     $('html').animate({
         scrollTop:0
-    }, 500)
+    }, 100)
+
+    // index.js 로 옮겼음
+    // let imgh = ($('.slide .img').height() / 2) - 35
+    // $('.article1 .slick-arrow').css({
+    //     top:'0%',
+    //     transform:`translateY(${imgh}px)`,
+    // })
+
+
+    let objString = localStorage.getItem('objkey') 
+    if ( objString ) {
+        const obj = JSON.parse(objString)
+        if ( Date.now()>obj.expire ) {
+            $('.popup').addClass('on')
+            localStorage.removeItem('objkey')
+        } else {
+            $('.popup').removeClass('on')
+        }
+    } else {
+        $('.popup').addClass('on')
+    }
+
+
 })
 
 
-$('#footer .privacy .fam').on('click', function(){
+
+// pc화면용 네비게이션 액션
+// $('#header #nav .depth1 > li').on('mouseover mouseout', function(){
+//     if ( $('html').hasClass('pc') ) {
+//         $(this).find('.depth2').stop().slideToggle()
+//     }
+// })
+
+$('#header #nav .depth1 > li').on('mouseover', function(){
+    if ( $('html').hasClass('pc') ) {
+        $(this).find('.depth2').stop().slideDown()
+    }
+})
+$('#header #nav .depth1 > li').on('mouseout', function(){
+    if ( $('html').hasClass('pc') ) {
+        $(this).find('.depth2').stop().slideUp()
+    }
+})
+
+
+// 위의 코드 결과와 같음
+// $('#header #nav .depth1 > li').hover(
+//     function(){
+//         if ( $('html').hasClass('pc')) {
+//             $(this).find('.depth2').stop().slideDown()
+//         }
+//     },
+//     function(){
+//         if ( $('html').hasClass('pc')) {
+//             $(this).find('.depth2').stop().slideUp()
+//         }
+//     }
+// )
+
+
+
+
+
+$('#header .open').on('click', function(){
+    $(this).parents('#header').addClass('on')
+})
+
+$('#header .close').on('click', function(){
+    $(this).parents('#header').removeClass('on')
+})
+
+$('#header #nav .depth1 > li > a').on('click', function(){
+    if ( $('html').hasClass('mobile') && $(this).next().is('.depth2') ) {
+        // $(this).parent().toggleClass('on')
+        $(this).next().stop().slideToggle()
+        return false
+    }
+})
+
+
+$(window).scroll(function(){
+    let sct = $(this).scrollTop()
+    if (sct>100) {
+        $('#gotop').fadeIn(300)
+    } else {
+        $('#gotop').fadeOut(300)
+    }
+})
+
+$('#gotop a').click(function(){
+    $('html').animate({
+        scrollTop:'0'
+    }, 500)
+    return false
+})
+
+$('.fam').on('click', function(){
     $(this).find('ul').slideToggle()
 })
+
+
+$('.close button').on('click', function(){
+    if ( $(this).prev().prop('checked') ) {
+        let tts = Date.now()+(100000)   // 하루는 (24*60*60*1000)ms
+        const obj = {
+            check : 'yes',
+            expire : tts
+        }
+        localStorage.setItem('objkey', JSON.stringify(obj))
+    } 
+    $('.popup').removeClass('on')
+})
+
+
+$('.top_menu .row > a').on('click', function(){
+    let url = $(this).attr('href')
+    let title = $(this).attr('title')
+    $('title').text(title)
+    $('#containerBox #section').remove()
+    $('#containerBox').load(url)
+    return false
+})
+
+
+
+
+})(jQuery);
